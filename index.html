@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vismaya M — Operator Console</title>
+<meta name="description" content="Vismaya M — Edge AI, IoT Systems &amp; Software Engineer. Patent-holder, published researcher, builder of real-time sensor-fusion and ML systems.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22%230a0e14%22/><text x=%2250%22 y=%2268%22 font-size=%2260%22 text-anchor=%22middle%22 fill=%22%23ffb400%22 font-family=%22monospace%22>V</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<div class="scanlines" aria-hidden="true"></div>
+<div class="grid-bg" aria-hidden="true"></div>
+
+<!-- ============ TOP BAR ============ -->
+<header class="topbar">
+  <div class="topbar-inner">
+    <a href="#top" class="brand">
+      <span class="brand-mark">V_M</span>
+      <span class="brand-sep">//</span>
+      <span class="brand-text">OPERATOR&nbsp;CONSOLE</span>
+    </a>
+
+    <nav class="mainnav" id="mainnav">
+      <a href="#profile" data-nav data-label="PROFILE"><span class="nav-idx">00</span>PROFILE</a>
+      <a href="#modules" data-nav data-label="MODULES"><span class="nav-idx">01</span>MODULES</a>
+      <a href="#ops-log" data-nav data-label="OPS_LOG"><span class="nav-idx">02</span>OPS_LOG</a>
+      <a href="#subsystems" data-nav data-label="SUBSYSTEMS"><span class="nav-idx">03</span>SUBSYSTEMS</a>
+      <a href="#credentials" data-nav data-label="CREDENTIALS"><span class="nav-idx">04</span>CREDENTIALS</a>
+      <a href="#uplink" data-nav data-label="UPLINK"><span class="nav-idx">05</span>UPLINK</a>
+    </nav>
+
+    <div class="topbar-status">
+      <span class="clock" id="clock">--:--:--</span>
+      <span class="status-pill"><i class="dot"></i>ONLINE</span>
+    </div>
+
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="scan-info">
+    <span>SECTOR: <b id="sectorReadout">00_PROFILE</b></span>
+    <span class="scan-info-sep">·</span>
+    <span>LOC: BENGALURU, IN <span id="tzTag">(IST)</span></span>
+    <span class="scan-info-sep">·</span>
+    <span>UPTIME: <b id="uptimeReadout">—</b></span>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="profile">
+    <div class="wrap hero-grid">
+      <div class="hero-main">
+        <div class="tag-line">
+          <span class="corner-bracket tl"></span>
+          <span class="pulse-dot"></span> BOOT SEQUENCE COMPLETE — IDENTITY VERIFIED
+          <span class="corner-bracket tr"></span>
+        </div>
+
+        <h1 class="hero-name">VISMAYA&nbsp;M</h1>
+
+        <div class="hero-role">
+          <span class="role-caret">&gt;</span>
+          <span class="role-cycle" id="roleCycle">EDGE AI ENGINEER</span>
+          <span class="role-cursor">_</span>
+        </div>
+
+        <p class="hero-abstract">
+          Final-year CSE engineer (CGPA 9.73) operating across four registers most portfolios keep separate:
+          embedded sensors, machine-learning pipelines, backend systems, and the test infrastructure that keeps
+          all three honest in production. One filed patent, one SCOPUS-indexed publication, three shipped
+          internships — built, not simulated.
+        </p>
+
+        <div class="hero-cta">
+          <a href="#modules" class="btn btn-primary">RUN&nbsp;MODULES <span class="arrow">↓</span></a>
+          <a href="assets/files/Vismaya_M_Resume.pdf" class="btn btn-ghost" download>DOWNLOAD&nbsp;RESUME <span class="arrow">⇩</span></a>
+          <a href="https://github.com/vismayaM-2005" target="_blank" rel="noopener" class="btn btn-icon" aria-label="GitHub">GITHUB ↗</a>
+          <a href="https://linkedin.com/in/vismaya-m-b381a8243" target="_blank" rel="noopener" class="btn btn-icon" aria-label="LinkedIn">LINKEDIN ↗</a>
+        </div>
+      </div>
+
+      <div class="hero-side">
+        <div class="id-card">
+          <span class="corner-bracket tl"></span><span class="corner-bracket tr"></span>
+          <span class="corner-bracket bl"></span><span class="corner-bracket br"></span>
+          <div class="id-photo">
+            <img src="assets/img/profile.jpg" alt="Vismaya M" id="profilePhoto" onerror="this.parentElement.classList.add('no-photo')">
+            <div class="id-photo-fallback">NO<br>SIGNAL</div>
+            <div class="id-photo-scan"></div>
+          </div>
+          <div class="id-meta">
+            <div class="id-row"><span>CALLSIGN</span><b>VISMAYA_M</b></div>
+            <div class="id-row"><span>CLASS</span><b>CSE · 2027</b></div>
+            <div class="id-row"><span>CLEARANCE</span><b>PATENT&nbsp;HOLDER</b></div>
+            <div class="id-row"><span>ORIGIN</span><b>BENGALURU, IN</b></div>
+          </div>
+        </div>
+
+        <div class="stat-strip">
+          <div class="stat-block"><b>9.73</b><span>CGPA / 10</span></div>
+          <div class="stat-block"><b>01</b><span>PATENT FILED</span></div>
+          <div class="stat-block"><b>01</b><span>SCOPUS PAPER</span></div>
+          <div class="stat-block"><b>03</b><span>INTERNSHIPS</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CAPABILITY RADAR ============ -->
+  <section class="capsec">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-idx">00.1</span>
+        <h2>CAPABILITY&nbsp;SPREAD</h2>
+        <p>Not a stack — a distribution. Signal strength across every domain touched, self-rated against delivered work.</p>
+      </div>
+      <div class="capsec-grid">
+        <div class="radar-wrap">
+          <div id="radarChart" class="radar-chart" role="img" aria-label="Radar chart of capability spread across six technical domains"></div>
+        </div>
+        <div class="cap-legend">
+          <div class="cap-row"><i style="--c:#ffb400"></i><span>AI / ML &amp; Generative Systems</span><b>9/10</b></div>
+          <div class="cap-row"><i style="--c:#3ee6e0"></i><span>Computer Vision</span><b>8/10</b></div>
+          <div class="cap-row"><i style="--c:#7ee787"></i><span>IoT &amp; Embedded Systems</span><b>8/10</b></div>
+          <div class="cap-row"><i style="--c:#ff7edb"></i><span>Backend &amp; Systems Engineering</span><b>8/10</b></div>
+          <div class="cap-row"><i style="--c:#8aa2ff"></i><span>Test Automation &amp; CI/CD</span><b>8/10</b></div>
+          <div class="cap-row"><i style="--c:#f2c14e"></i><span>Frontend Engineering</span><b>6/10</b></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MODULES / PROJECTS ============ -->
+  <section class="modules" id="modules">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-idx">01</span>
+        <h2>MODULES</h2>
+        <p>Three deployed systems. Each one fuses at least two disciplines — sensing, inference, and delivery — rather than living in a single layer.</p>
+      </div>
+
+      <!-- MODULE 01 -->
+      <article class="module-card">
+        <div class="module-head">
+          <div class="module-title">
+            <span class="module-idx">MODULE&nbsp;01</span>
+            <h3>FlashRescue</h3>
+            <p class="module-sub">Smart-City Disaster Response Platform</p>
+          </div>
+          <div class="module-tags">
+            <span class="tag tag-gold">PATENT FILED</span>
+            <span class="tag tag-cyan">ICSDSA 2026 · SPRINGER · SCOPUS</span>
+          </div>
+        </div>
+
+        <div class="module-body">
+          <div class="module-diagram" aria-hidden="true">
+            <svg viewBox="0 0 760 190" class="pipeline-svg">
+              <defs>
+                <marker id="arrow1" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                  <path d="M0,0 L6,3 L0,6 Z" fill="var(--accent)"/>
+                </marker>
+              </defs>
+              <line x1="95" y1="60" x2="215" y2="60" class="pipe-line" marker-end="url(#arrow1)"/>
+              <line x1="315" y1="60" x2="435" y2="60" class="pipe-line" marker-end="url(#arrow1)"/>
+              <line x1="535" y1="60" x2="655" y2="60" class="pipe-line" marker-end="url(#arrow1)"/>
+
+              <g class="pipe-node"><rect x="15" y="30" width="80" height="60" rx="6"/><text x="55" y="55">IoT</text><text x="55" y="72" class="pipe-caption">sensors</text></g>
+              <g class="pipe-node"><rect x="215" y="30" width="100" height="60" rx="6"/><text x="265" y="55">MQTT</text><text x="265" y="72" class="pipe-caption">broker</text></g>
+              <g class="pipe-node pipe-node-accent"><rect x="435" y="30" width="100" height="60" rx="6"/><text x="485" y="50">AI</text><text x="485" y="65" class="pipe-caption">5 ML models</text><text x="485" y="78" class="pipe-caption">VLM · CNN · ASR</text></g>
+              <g class="pipe-node"><rect x="655" y="30" width="90" height="60" rx="6"/><text x="700" y="55">FUSION</text><text x="700" y="72" class="pipe-caption">+ DASH</text></g>
+
+              <line x1="480" y1="90" x2="480" y2="150" class="pipe-line-dashed"/>
+              <text x="480" y="170" class="pipe-note" text-anchor="middle">A* hazard-aware evacuation routing</text>
+            </svg>
+          </div>
+
+          <ul class="module-points">
+            <li>Architected a 5-layer microservices pipeline (IoT → MQTT → AI → Fusion → Dashboard) with a 3-person team, integrating <b>5 ML models</b> — Vision Transformer, fire/smoke CNN, ResNet-50, Whisper ASR, and a bilingual disaster-text classifier — for multimodal triage across GPS, image, video, and voice input.</li>
+            <li>Implemented trust-scored sensor-citizen data fusion and A* hazard-aware evacuation routing, achieving <b>sub-500ms</b> alert latency and <b>sub-200ms</b> route computation.</li>
+            <li>Peer-reviewed paper accepted &amp; presented at <b>ICSDSA 2026</b>, a SCOPUS-indexed Springer conference.</li>
+          </ul>
+        </div>
+
+        <div class="module-footer">
+          <div class="metric"><span>ALERT LATENCY</span><div class="bar"><div class="bar-fill" style="--v:92%"></div></div><b>&lt;500ms</b></div>
+          <div class="metric"><span>ROUTE COMPUTE</span><div class="bar"><div class="bar-fill" style="--v:96%"></div></div><b>&lt;200ms</b></div>
+          <div class="metric"><span>ML MODELS FUSED</span><div class="bar"><div class="bar-fill" style="--v:100%"></div></div><b>5</b></div>
+          <div class="module-links" data-repo-slot="flashrescue">
+            <span class="tag tag-muted">SOURCE: PRIVATE</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- MODULE 02 -->
+      <article class="module-card">
+        <div class="module-head">
+          <div class="module-title">
+            <span class="module-idx">MODULE&nbsp;02</span>
+            <h3>AURA</h3>
+            <p class="module-sub">Adaptive Urban Risk Analyzer for Crowd Management</p>
+          </div>
+          <div class="module-tags">
+            <span class="tag tag-cyan">REAL-TIME CV</span>
+            <span class="tag tag-muted">3-MODULE ARCH</span>
+          </div>
+        </div>
+
+        <div class="module-body">
+          <div class="module-diagram" aria-hidden="true">
+            <svg viewBox="0 0 760 190" class="pipeline-svg">
+              <defs>
+                <marker id="arrow2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                  <path d="M0,0 L6,3 L0,6 Z" fill="var(--accent)"/>
+                </marker>
+              </defs>
+              <line x1="235" y1="60" x2="355" y2="60" class="pipe-line" marker-end="url(#arrow2)"/>
+              <line x1="555" y1="60" x2="600" y2="60" class="pipe-line" marker-end="url(#arrow2)"/>
+
+              <g class="pipe-node pipe-node-accent"><rect x="35" y="25" width="200" height="70" rx="6"/><text x="135" y="50">VIDEO ANALYTICS</text><text x="135" y="68" class="pipe-caption">MOG2 + Farneback · 25–30 FPS</text><text x="135" y="82" class="pipe-caption">optical flow</text></g>
+              <g class="pipe-node"><rect x="355" y="25" width="200" height="70" rx="6"/><text x="455" y="50">RISK ENGINE</text><text x="455" y="68" class="pipe-caption">Risk · Pressure · Exit-load</text><text x="455" y="82" class="pipe-caption">Panic · Huddle detection</text></g>
+              <g class="pipe-node"><rect x="600" y="25" width="145" height="70" rx="6"/><text x="672" y="50">DASHBOARD</text><text x="672" y="68" class="pipe-caption">React / Express</text></g>
+
+              <text x="380" y="140" class="pipe-note" text-anchor="middle">5 proprietary risk metrics → hazard-aware safety-cost function</text>
+            </svg>
+          </div>
+
+          <ul class="module-points">
+            <li>Built a real-time crowd-monitoring pipeline (OpenCV MOG2 + Farneback optical flow) processing live video at <b>25–30 FPS</b> across a 3-module architecture: video analytics, Python risk engine, and a React/Express dashboard.</li>
+            <li>Engineered <b>5 proprietary risk metrics</b> — Risk Score, Crowd Pressure Index, Exit Load Balance Score, Panic Detection, Huddle Detection — feeding a multi-metric safety-cost function for hazard-aware evacuation routing.</li>
+          </ul>
+        </div>
+
+        <div class="module-footer">
+          <div class="metric"><span>FRAME RATE</span><div class="bar"><div class="bar-fill" style="--v:80%"></div></div><b>25–30 FPS</b></div>
+          <div class="metric"><span>RISK METRICS</span><div class="bar"><div class="bar-fill" style="--v:100%"></div></div><b>5</b></div>
+          <div class="metric"><span>ARCH LAYERS</span><div class="bar"><div class="bar-fill" style="--v:60%"></div></div><b>3</b></div>
+          <div class="module-links" data-repo-slot="aura">
+            <span class="tag tag-muted">SOURCE: PRIVATE</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- MODULE 03 -->
+      <article class="module-card">
+        <div class="module-head">
+          <div class="module-title">
+            <span class="module-idx">MODULE&nbsp;03</span>
+            <h3>IntelliCheck AI</h3>
+            <p class="module-sub">AI Integrity &amp; Plagiarism Detection Platform</p>
+          </div>
+          <div class="module-tags">
+            <span class="tag tag-gold">RAG + FAISS</span>
+            <span class="tag tag-cyan">SHIPPED W/ CI/CD</span>
+          </div>
+        </div>
+
+        <div class="module-body">
+          <div class="module-diagram" aria-hidden="true">
+            <svg viewBox="0 0 760 190" class="pipeline-svg">
+              <defs>
+                <marker id="arrow3" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                  <path d="M0,0 L6,3 L0,6 Z" fill="var(--accent)"/>
+                </marker>
+              </defs>
+              <line x1="185" y1="60" x2="300" y2="60" class="pipe-line" marker-end="url(#arrow3)"/>
+              <line x1="440" y1="60" x2="555" y2="60" class="pipe-line" marker-end="url(#arrow3)"/>
+
+              <g class="pipe-node"><rect x="15" y="30" width="170" height="60" rx="6"/><text x="100" y="55">DOCUMENT</text><text x="100" y="72" class="pipe-caption">ingest</text></g>
+              <g class="pipe-node pipe-node-accent"><rect x="300" y="25" width="140" height="70" rx="6"/><text x="370" y="50">RAG + FAISS</text><text x="370" y="68" class="pipe-caption">semantic match</text><text x="370" y="82" class="pipe-caption">→ FastAPI</text></g>
+              <g class="pipe-node"><rect x="555" y="30" width="185" height="60" rx="6"/><text x="647" y="50">DOCKER</text><text x="647" y="67" class="pipe-caption">GitHub Actions CI/CD</text></g>
+
+              <text x="380" y="140" class="pipe-note" text-anchor="middle">Automated build → containerize → deploy</text>
+            </svg>
+          </div>
+
+          <ul class="module-points">
+            <li>Implemented a <b>RAG + FAISS</b> pipeline for semantic plagiarism detection and document-integrity verification, deployed via FastAPI.</li>
+            <li>Containerized the service with Docker and built a <b>GitHub Actions CI/CD</b> pipeline for automated builds and deployment.</li>
+          </ul>
+        </div>
+
+        <div class="module-footer">
+          <div class="metric"><span>PIPELINE</span><div class="bar"><div class="bar-fill" style="--v:100%"></div></div><b>RAG+FAISS</b></div>
+          <div class="metric"><span>DEPLOY</span><div class="bar"><div class="bar-fill" style="--v:100%"></div></div><b>DOCKER+CI/CD</b></div>
+          <div class="metric"><span>API</span><div class="bar"><div class="bar-fill" style="--v:90%"></div></div><b>FastAPI</b></div>
+          <div class="module-links" data-repo-slot="intellicheck">
+            <span class="tag tag-muted">SOURCE: PRIVATE</span>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ OPS LOG / EXPERIENCE ============ -->
+  <section class="opslog" id="ops-log">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-idx">02</span>
+        <h2>OPS&nbsp;LOG</h2>
+        <p>Field record — reverse chronological. Three internships, three different problem classes.</p>
+      </div>
+
+      <div class="log-timeline">
+        <div class="log-entry">
+          <div class="log-time"><span class="log-status log-active">ACTIVE</span>2026.07 — PRESENT</div>
+          <div class="log-content">
+            <h3>Edge AI Intern <span class="log-org">— WG Tech Solutions Pvt. Ltd.</span></h3>
+            <p>&gt; Led R&amp;D generalizing an open-set defect detection pipeline across product lines, benchmarking a new single-model approach against the existing 9-model system — matching accuracy at <b>~3× faster inference</b>.</p>
+            <p>&gt; Root-caused a false-alarm issue via leave-one-panel-out testing, isolated it to training-data volume, and reported a concrete fix.</p>
+            <p>&gt; Built a manifest-driven test orchestration framework with automated HTML/JSON reporting and dependency tracking.</p>
+            <p>&gt; Engineered a YOLOv8 animal-detection pipeline (<b>0.817 precision / 0.701 recall / 0.752 mAP50</b>) on a ~76K-image dataset, fixing a validation blind spot with a capped negative-to-positive ratio and ByteTrack temporal confirmation.</p>
+          </div>
+        </div>
+
+        <div class="log-entry">
+          <div class="log-time"><span class="log-status">CLOSED</span>2026.03 — 2026.07</div>
+          <div class="log-content">
+            <h3>AI Engineer Intern <span class="log-org">— Kazunov 1AI Pvt. Ltd.</span></h3>
+            <p>&gt; Developed a document fraud-detection system combining OCR text extraction with OpenCV-based tamper analysis — <b>92% accuracy on PDFs</b>, <b>88% on images</b>.</p>
+            <p>&gt; Replaced a synchronous processing bottleneck with an AWS SQS-backed asynchronous queue, decoupling intake from downstream verification.</p>
+          </div>
+        </div>
+
+        <div class="log-entry">
+          <div class="log-time"><span class="log-status">CLOSED</span>2025.06 — 2025.11</div>
+          <div class="log-content">
+            <h3>Web Development Intern <span class="log-org">— Sankhyatraya Science &amp; Research Association</span></h3>
+            <p>&gt; Delivered and deployed the organization's production web application end to end, including DNS configuration and SSL provisioning.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SUBSYSTEMS / SKILLS ============ -->
+  <section class="subsystems" id="subsystems">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-idx">03</span>
+        <h2>SUBSYSTEMS</h2>
+        <p>Tooling grouped by function, not just alphabetized.</p>
+      </div>
+
+      <div class="skill-grid">
+        <div class="skill-card">
+          <h4>Machine Learning &amp; Computer Vision</h4>
+          <div class="chip-row">
+            <span class="chip">YOLOv8</span><span class="chip">TensorFlow</span><span class="chip">OpenCV</span><span class="chip">ByteTrack</span><span class="chip">CNNs</span><span class="chip">Transfer Learning</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h4>Generative AI &amp; LLM Systems</h4>
+          <div class="chip-row">
+            <span class="chip">RAG</span><span class="chip">FAISS</span><span class="chip">Hugging Face Transformers</span><span class="chip">Prompt Engineering</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h4>Backend &amp; APIs</h4>
+          <div class="chip-row">
+            <span class="chip">FastAPI</span><span class="chip">Flask</span><span class="chip">REST APIs</span><span class="chip">WebSocket</span><span class="chip">MongoDB</span><span class="chip">PostgreSQL</span><span class="chip">Redis</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h4>Test Automation &amp; CI/CD</h4>
+          <div class="chip-row">
+            <span class="chip">Pytest</span><span class="chip">DAG Orchestration</span><span class="chip">unittest.mock</span><span class="chip">MagicMock</span><span class="chip">GitHub Actions</span><span class="chip">Docker</span><span class="chip">Jenkins</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h4>Programming Languages</h4>
+          <div class="chip-row">
+            <span class="chip">Python</span><span class="chip">Java</span><span class="chip">C</span><span class="chip">SQL</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h4>Frontend Engineering</h4>
+          <div class="chip-row">
+            <span class="chip">React</span><span class="chip">Next.js</span><span class="chip">JavaScript</span><span class="chip">HTML5</span><span class="chip">CSS3</span><span class="chip">Tailwind CSS</span><span class="chip">Bootstrap</span>
+          </div>
+        </div>
+        <div class="skill-card skill-card-wide">
+          <h4>AI Tools &amp; Fluency</h4>
+          <div class="chip-row">
+            <span class="chip">ChatGPT / Claude for workflow automation</span><span class="chip">Prompt Engineering</span><span class="chip">Pandas</span><span class="chip">NumPy</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CREDENTIALS ============ -->
+  <section class="credentials" id="credentials">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-idx">04</span>
+        <h2>CREDENTIALS</h2>
+        <p>Achievements, education, and the training programs behind the numbers above.</p>
+      </div>
+
+      <div class="cred-grid">
+        <div class="cred-panel">
+          <h4>Achievements</h4>
+          <ul class="cred-list">
+            <li><b>Published Indian Patent</b> — FlashRescue: Smart-City Disaster Response Platform, Indian Patent Office</li>
+            <li><b>Second Prize, ₹50,000</b> — K-GIS 2.0 State-Level Exhibition, Karnataka State Remote Sensing Applications Centre (KSRSAC)</li>
+            <li><b>Best Elevator Pitch</b> — NEC's Eureka, ED-Cell BNMIT | E-Cell, IIT Bombay</li>
+            <li><b>2nd Runner-up</b> — State-Level Project Competition 2025, Bangalore Institute of Technology</li>
+          </ul>
+        </div>
+
+        <div class="cred-panel">
+          <h4>Education</h4>
+          <div class="edu-row"><span>B.E., Computer Science — B N M Institute of Technology</span><b>CGPA 9.73</b><em>2023–2027</em></div>
+          <div class="edu-row"><span>Senior Secondary (XII) — Jain PU College</span><b>94.66%</b><em>2021–2023</em></div>
+          <div class="edu-row"><span>Secondary (X) — Kendriya Vidyalaya</span><b>95.5%</b><em>2011–2021</em></div>
+        </div>
+
+        <div class="cred-panel cred-panel-wide">
+          <h4>Programs &amp; Courses</h4>
+          <div class="course-grid">
+            <div class="course-item"><b>ACM India Winter School on Edge AI</b><span>IISc Bengaluru · Selected Participant, National 8-day program</span></div>
+            <div class="course-item"><b>Samsung Innovation Campus</b><span>Student Trainee — IoT systems, embedded programming, sensor integration</span></div>
+            <div class="course-item"><b>BNMIT Super 60 Leadership Academy</b><span>Student Member — mentor-led leadership program</span></div>
+            <div class="course-item"><b>Artificial Intelligence Fundamentals</b><span>IBM SkillsBuild</span></div>
+            <div class="course-item"><b>Introduction to Internet of Things</b><span>NPTEL — Top 2% of learners</span></div>
+            <div class="course-item"><b>Foundations of Deep Learning</b><span>NPTEL — Elite Certificate, 78%</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ UPLINK / CONTACT ============ -->
+  <section class="uplink" id="uplink">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-idx">05</span>
+        <h2>UPLINK</h2>
+        <p>Open channel. Reach out for internships, research collaboration, or full-time roles.</p>
+      </div>
+
+      <div class="uplink-panel">
+        <span class="corner-bracket tl"></span><span class="corner-bracket tr"></span>
+        <span class="corner-bracket bl"></span><span class="corner-bracket br"></span>
+        <div class="uplink-grid">
+          <button class="uplink-item" id="copyEmail" data-copy="vismayamsagar@gmail.com">
+            <span class="uplink-label">EMAIL</span>
+            <span class="uplink-value">vismayamsagar@gmail.com</span>
+            <span class="uplink-action">CLICK TO COPY</span>
+          </button>
+          <a class="uplink-item" href="tel:+919380212798">
+            <span class="uplink-label">PHONE</span>
+            <span class="uplink-value">+91&nbsp;93802&nbsp;12798</span>
+            <span class="uplink-action">CALL ↗</span>
+          </a>
+          <a class="uplink-item" href="https://linkedin.com/in/vismaya-m-b381a8243" target="_blank" rel="noopener">
+            <span class="uplink-label">LINKEDIN</span>
+            <span class="uplink-value">/in/vismaya-m-b381a8243</span>
+            <span class="uplink-action">OPEN ↗</span>
+          </a>
+          <a class="uplink-item" href="https://github.com/vismayaM-2005" target="_blank" rel="noopener">
+            <span class="uplink-label">GITHUB</span>
+            <span class="uplink-value">/vismayaM-2005</span>
+            <span class="uplink-action">OPEN ↗</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="sitefoot">
+  <div class="wrap sitefoot-inner">
+    <span>© <span id="year"></span> VISMAYA M — COMPILED FROM VERIFIED FIELD RECORDS</span>
+    <span class="sitefoot-sep">//</span>
+    <span>BUILT WITH HAND-WRITTEN HTML/CSS/JS — NO FRAMEWORK, NO TEMPLATE</span>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>
