@@ -20,8 +20,8 @@ export default function BookCard({ book, priority = false }: { book: BookSummary
         </div>
       )}
       <div className={styles.statRow}>
-        <span className={`${styles.badge} ${styles.badgeReads}`}>📖 {book.chapterCount}</span>
-        <span className={`${styles.badge} ${styles.badgeTime}`}>⏱ {book.readMinutes}m</span>
+        <span className={`${styles.badge} ${styles.badgeReads}`}>{book.chapterCount} ch</span>
+        <span className={`${styles.badge} ${styles.badgeTime}`}>{book.readMinutes}m</span>
       </div>
     </Link>
   );

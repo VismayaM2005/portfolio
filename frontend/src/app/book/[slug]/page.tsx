@@ -87,10 +87,10 @@ export default async function BookPage({ params }: { params: Promise<{ slug: str
               )}
 
               <div className={styles.metaRow}>
-                <span className={`${styles.badge} ${styles.badgeReads}`}>📖 {book.chapterCount} chapters</span>
-                <span className={`${styles.badge} ${styles.badgeTime}`}>⏱ {book.readMinutes} min read</span>
+                <span className={`${styles.badge} ${styles.badgeReads}`}>{book.chapterCount} chapters</span>
+                <span className={`${styles.badge} ${styles.badgeTime}`}>{book.readMinutes} min read</span>
                 <span className={`${styles.badge} ${styles.badgeStatus}`}>
-                  {book.storyStatus === 'ongoing' ? '🟢 Ongoing' : '✅ Completed'}
+                  {book.storyStatus === 'ongoing' ? 'Ongoing' : 'Completed'}
                 </span>
               </div>
 

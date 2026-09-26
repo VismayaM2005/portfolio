@@ -148,7 +148,7 @@ PROJECTS = [
         "note": "This version won 2nd prize at K-GIS -- it lost at 3-4 earlier competitions first.",
         "repoUrl": None,
         "chapterHooks": {
-            "premise": "Every disaster app has the same dirty secret: it trusts its inputs. This one doesn't.",
+            "premise": "Citizen reports, sensor pings, and volunteer GPS, all arriving at once, all possibly wrong. The job was deciding what to actually believe.",
             "build": "Three vision models, a speech model, and a scoring rule that refuses to agree with itself too easily.",
             "twist": "The hard part was never the AI. It was two numbers that don't mean the same thing arguing over who's right.",
             "resolution": "Half a second to raise an alarm. Less than that to plot a way around the danger.",
@@ -166,10 +166,9 @@ PROJECTS = [
         "coverType": "illustration",
         "coverPattern": "aura",
         "blurb": (
-            "A crowd is a slow-motion emergency until it isn't. This is the story of the number "
-            "that had to turn video noise into a red/yellow/green verdict fast enough to matter, "
-            "and the routing algorithm that had to pick a safe way out before the situation did "
-            "the choosing instead."
+            "Density, speed, and a dozen other signals from a live camera feed, turned into one "
+            "red/yellow/green verdict per zone, fast enough to matter -- plus a routing algorithm "
+            "that picks a safe way out before the crowd picks one for itself."
         ),
         "status": ["Real-time CV pipeline", "4-person team"],
         "team": "4-person team -- teammates built the video-analytics pipeline, admin dashboard, and mobile app",
@@ -244,9 +243,8 @@ PROJECTS = [
         "coverType": "photo",
         "coverImage": "/covers/intellicheck-ai.png",
         "blurb": (
-            "It doesn't just say \"guilty.\" It shows its work -- the exact passage it matched, "
-            "why, and how to fix it -- all running locally on a laptop with zero paid API calls. "
-            "A quiet, local-first machine that explains itself instead of just accusing."
+            "Flags a sentence, shows the exact passage it matched and why, then suggests a rewrite "
+            "-- all running locally on a laptop with zero paid API calls."
         ),
         "status": ["Local-first, zero paid API"],
         "team": "2-person project, built jointly across most modules",
@@ -300,7 +298,7 @@ PROJECTS = [
         "note": None,
         "repoUrl": None,
         "chapterHooks": {
-            "premise": "A plagiarism checker that just says \"flagged\" is a black box. This one had to show its receipts.",
+            "premise": "Flag a sentence as plagiarized, and the next question is always 'prove it' -- so the explanation had to be built in from the start, not bolted on after.",
             "build": "TF-IDF for speed, FAISS and a local language model for the part where it explains itself.",
             "twist": "The heatmap looks like transformer attention. It isn't, and the docs say so on purpose.",
             "resolution": "Every flag comes with the matching passage and a plain-English reason -- and it never leaves the laptop.",
@@ -376,7 +374,7 @@ PROJECTS = [
         "note": None,
         "repoUrl": None,
         "chapterHooks": {
-            "premise": "Every coding-interview prep tool tells you if your code works. None of them tell you if Google would hire you for it.",
+            "premise": "A weekend build to see what a 'senior Google interviewer' persona would actually say about a code submission -- and to make that opinion structured enough to trust.",
             "build": "A persona-conditioned prompt, a parser for the LLM's opinions, and a database that remembers every verdict.",
             "twist": "Ask the same model the same question twice, get two slightly different answers -- welcome to LLM engineering.",
             "resolution": "Live, deployed, and free to insult your code as six different tech companies.",
@@ -442,7 +440,7 @@ PROJECTS = [
         "note": None,
         "repoUrl": None,
         "chapterHooks": {
-            "premise": "Accuracy tells you who's right more often. It doesn't tell you who's dangerous when they're wrong.",
+            "premise": "Two models, the same reviews, and one question underneath the leaderboard: which one is more dangerous the moment it's wrong.",
             "build": "A scorer whose only job is to catch a model being confidently, dangerously mistaken.",
             "twist": "The bigger, pretrained model won -- not just on accuracy, but on knowing what it didn't know.",
             "resolution": "Top-10 riskiest misfires per model, explained word-by-word, not just scored.",
@@ -507,7 +505,7 @@ PROJECTS = [
         "note": None,
         "repoUrl": None,
         "chapterHooks": {
-            "premise": "A farmer doesn't want a probability distribution. They want to know if the crop is dying.",
+            "premise": "98.88% confidence on a diseased leaf means nothing to a farmer without a reason attached -- so the model had to point at the actual lesion, not just name it.",
             "build": "MobileNetV2, fifteen diseases, and a heatmap that points at the actual lesion.",
             "twist": "Trained on clean lab photos. Real leaves are messier, and the model needed to admit that.",
             "resolution": "98.88% confident, and a treatment recommendation, not just a label.",
@@ -772,7 +770,7 @@ PROJECTS = [
         "note": None,
         "repoUrl": None,
         "chapterHooks": {
-            "premise": "Every trip starts with too many tabs open. This closes most of them.",
+            "premise": "Packages, hotels, transport, and a chatbot that actually answers -- planned from one screen instead of twenty browser tabs.",
             "build": "A recommender, a chatbot, and two booking modules, all talking to one database.",
             "twist": "Rule-based logic is honest and fast to ship -- it just doesn't get smarter on its own.",
             "resolution": "Destinations, packages, and bookings, planned from a single screen.",
@@ -871,7 +869,7 @@ EXPERIENCE = [
             "document.",
         ],
         "chapterHooks": {
-            "premise": "A forged document doesn't announce itself. It hides in the font-switching and the metadata.",
+            "premise": "Insurance documents, sorted into clean, suspicious, or forged, using font-switch rates, compression artifacts, and metadata nobody thinks to fake.",
             "build": "A 300-tree forest for PDFs, a CNN-plus-forensics hybrid for images, and a queue that never blocks.",
             "twist": "The image side is still catching up to the PDF side -- and that's said outright, not hidden.",
             "resolution": "95.12% on the PDF pipeline. A working, cryptographically real signature POC.",

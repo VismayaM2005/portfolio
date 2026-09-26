@@ -38,7 +38,7 @@ export default function LibraryGrid({ books, genres }: { books: BookSummary[]; g
 
       {projects.length > 0 && (
         <>
-          <h3 className={styles.shelfTitle}>📚 Projects</h3>
+          <h3 className={styles.shelfTitle}>Projects</h3>
           <div className={styles.grid}>
             {projects.map((b, i) => (
               <BookCard key={b.slug} book={b} priority={i < 4} />
@@ -49,7 +49,7 @@ export default function LibraryGrid({ books, genres }: { books: BookSummary[]; g
 
       {internships.length > 0 && (
         <>
-          <h3 className={styles.shelfTitle}>💼 Internships</h3>
+          <h3 className={styles.shelfTitle}>Internships</h3>
           <div className={styles.grid}>
             {internships.map((b) => (
               <BookCard key={b.slug} book={b} />

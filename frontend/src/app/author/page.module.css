@@ -122,11 +122,14 @@
 }
 
 .achieveList li::before {
-  content: '🏆';
+  content: '';
   position: absolute;
   left: 0;
-  top: 1px;
-  font-size: 12px;
+  top: 7px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--orange);
 }
 
 .achieveList b {

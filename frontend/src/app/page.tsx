@@ -13,14 +13,15 @@ export default async function Home() {
       <section className={styles.hero}>
         <div className="wrap">
           <div className={styles.heroInner}>
-            <span className={styles.eyebrow}>📖 a library, not a résumé</span>
+            <span className={styles.eyebrow}>Bengaluru, India</span>
             <h1 className={styles.h1}>
-              Vismaya writes <span>real engineering</span>, one book per project.
+              Vismaya <span>M</span>
             </h1>
             <p className={styles.lede}>
-              Final-year CSE engineer working across AI, IoT, and backend systems. Every project
-              and internship below is written up properly: the problem, the build, the plot
-              twist, and the result — tech stack and metrics included, not buried.
+              Final-year CSE engineer working across AI, IoT, and backend systems. One filed
+              patent, one SCOPUS-indexed publication, three internships, eleven shipped projects.
+              Each one below has its own page: the stack, the role, the metrics, and what actually
+              went wrong along the way.
             </p>
             <div className={styles.ctaRow}>
               <Link href="#library" className={`${styles.btn} ${styles.btnPrimary}`}>

@@ -12,9 +12,9 @@ export default async function ContactPage() {
     <main>
       <header className={styles.header}>
         <div className="wrap">
-          <span className="mono-label">✉ Message the author</span>
+          <span className="mono-label">Contact</span>
           <h1>Let&apos;s talk</h1>
-          <p>Open for internships, research collaboration, and full-time roles — real replies, not an autoresponder.</p>
+          <p>Open for internships, research collaboration, and full-time roles.</p>
         </div>
       </header>
 

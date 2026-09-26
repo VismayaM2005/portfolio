@@ -50,7 +50,7 @@ export default async function AuthorPage() {
           <p className={styles.bio}>{profile.bio}</p>
 
           <div className={styles.panel} style={{ marginBottom: 20 }}>
-            <h2>📚 Works ({books.length})</h2>
+            <h2>Works ({books.length})</h2>
             <div className={styles.worksGrid}>
               {books.slice(0, 6).map((b) => (
                 <BookCard key={b.slug} book={b} />
@@ -63,7 +63,7 @@ export default async function AuthorPage() {
 
           <div className={styles.grid}>
             <div className={styles.panel}>
-              <h2>🏆 Achievements</h2>
+              <h2>Achievements</h2>
               <ul className={styles.achieveList}>
                 {achievements.map((a) => (
                   <li key={a.title}>
@@ -75,7 +75,7 @@ export default async function AuthorPage() {
             </div>
 
             <div className={styles.panel}>
-              <h2>🎓 Education</h2>
+              <h2>Education</h2>
               {education.map((e) => (
                 <div key={e.school} className={styles.eduRow}>
                   <span>
@@ -88,7 +88,7 @@ export default async function AuthorPage() {
             </div>
 
             <div className={`${styles.panel} ${styles.panelWide}`}>
-              <h2>🚀 Training & Programs</h2>
+              <h2>Training & Programs</h2>
               <div className={styles.programGrid}>
                 {programs.map((p) => (
                   <div key={p.title} className={styles.programItem}>
@@ -104,7 +104,7 @@ export default async function AuthorPage() {
             </div>
 
             <div className={`${styles.panel} ${styles.panelWide}`}>
-              <h2>📜 Courses</h2>
+              <h2>Courses</h2>
               <div className={styles.programGrid}>
                 {courses.map((c) => (
                   <div key={c.title} className={styles.programItem}>
@@ -119,7 +119,7 @@ export default async function AuthorPage() {
           <div className={styles.messageCta}>
             <p>Open for internships, research collaboration, and full-time roles.</p>
             <Link href="/contact" className={styles.messageBtn}>
-              ✉ Message Vismaya
+              Message Vismaya
             </Link>
           </div>
         </div>
