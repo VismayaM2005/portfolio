@@ -70,8 +70,8 @@ PROJECTS = [
         "tags": ["disasterresponse", "sensorfusion", "hackathon", "patented"],
         "domains": ["ai", "backend", "iot"],
         "storyStatus": "completed",
-        "coverType": "illustration",
-        "coverPattern": "flashrescue",
+        "coverType": "photo",
+        "coverImage": "/covers/flashrescue.jpg",
         "blurb": (
             "A city is flooding, and everyone's phone is lying to everyone else. Some reports "
             "are real, some are panic, one might be a prank. This is the story of the fusion "
@@ -163,8 +163,8 @@ PROJECTS = [
         "tags": ["crowdsafety", "computervision", "realtime"],
         "domains": ["cv", "ai", "backend"],
         "storyStatus": "completed",
-        "coverType": "illustration",
-        "coverPattern": "aura",
+        "coverType": "photo",
+        "coverImage": "/covers/aura.jpg",
         "blurb": (
             "Density, speed, and a dozen other signals from a live camera feed, turned into one "
             "red/yellow/green verdict per zone, fast enough to matter -- plus a routing algorithm "
@@ -236,12 +236,12 @@ PROJECTS = [
         "slug": "intellicheck-ai",
         "title": "IntelliCheck AI",
         "subtitle": "AI Integrity & Plagiarism Detection Platform",
-        "genre": "Science Fiction",
+        "genre": "Mystery/Thriller",
         "tags": ["academicintegrity", "rag", "localfirst"],
         "domains": ["ai", "backend"],
         "storyStatus": "completed",
         "coverType": "photo",
-        "coverImage": "/covers/intellicheck-ai.png",
+        "coverImage": "/covers/intellicheck-ai.jpg",
         "blurb": (
             "Flags a sentence, shows the exact passage it matched and why, then suggests a rewrite "
             "-- all running locally on a laptop with zero paid API calls."
@@ -313,8 +313,8 @@ PROJECTS = [
         "tags": ["llm", "solobuild", "deployed"],
         "domains": ["backend", "ai"],
         "storyStatus": "completed",
-        "coverType": "illustration",
-        "coverPattern": "reviewmate",
+        "coverType": "photo",
+        "coverImage": "/covers/reviewmate.jpg",
         "blurb": (
             "What if your code could be judged by an imaginary, slightly intimidating panel of "
             "Google, Amazon, and Goldman Sachs interviewers -- on demand, for free, without the "
@@ -385,12 +385,12 @@ PROJECTS = [
         "slug": "imdb-sentiment",
         "title": "IMDB Sentiment Analysis",
         "subtitle": "BiLSTM vs. DistilBERT, with a Conflict-Score evaluation framework",
-        "genre": "Science Fiction",
+        "genre": "Non-Fiction",
         "tags": ["nlp", "explainableai", "modelevaluation"],
         "domains": ["ai"],
         "storyStatus": "completed",
         "coverType": "photo",
-        "coverImage": "/covers/imdb-sentiment.png",
+        "coverImage": "/covers/imdb-sentiment.jpg",
         "blurb": (
             "Two models read the same movie reviews. One is a careful old-school recurrent net. "
             "The other is a pretrained transformer that's seen half the internet. This is the "
@@ -451,7 +451,7 @@ PROJECTS = [
         "slug": "smart-agriculture",
         "title": "Smart Agriculture Intelligence System",
         "subtitle": "Deep learning for crop health and yield planning",
-        "genre": "Adventure",
+        "genre": "Drama",
         "tags": ["agritech", "computervision", "hackathon"],
         "domains": ["cv", "iot", "ai"],
         "storyStatus": "completed",
@@ -516,7 +516,7 @@ PROJECTS = [
         "slug": "assistive-navigation-stick",
         "title": "Smart AI-Powered Assistive Navigation Stick",
         "subtitle": "Edge AI mobility aid for visually impaired users",
-        "genre": "Teen Fiction",
+        "genre": "Adventure",
         "tags": ["accessibility", "edgeai", "iot"],
         "domains": ["iot", "ai"],
         "storyStatus": "completed",
@@ -586,7 +586,7 @@ PROJECTS = [
         "domains": ["iot"],
         "storyStatus": "completed",
         "coverType": "photo",
-        "coverImage": "/covers/smart-irrigation.png",
+        "coverImage": "/covers/smart-irrigation.jpg",
         "blurb": (
             "A soil sensor says water me. The weather API says it's about to rain anyway. This is "
             "the small, unglamorous story of teaching a pump to listen to both before deciding, "
@@ -643,8 +643,8 @@ PROJECTS = [
         "tags": ["java", "soloproject", "retrotech"],
         "domains": ["backend"],
         "storyStatus": "completed",
-        "coverType": "illustration",
-        "coverPattern": "morse",
+        "coverType": "photo",
+        "coverImage": "/covers/morse-code-converter.jpg",
         "blurb": (
             "A 180-year-old signaling code gets a modern rewrite: type a word, hear it tap out in "
             "dots and dashes, and if that word happens to be \"SOS,\" watch the whole interface "
@@ -693,8 +693,8 @@ PROJECTS = [
         "tags": ["webdev", "coursework", "booking"],
         "domains": ["backend"],
         "storyStatus": "completed",
-        "coverType": "illustration",
-        "coverPattern": "theatre",
+        "coverType": "photo",
+        "coverImage": "/covers/theatre-info-system.jpg",
         "blurb": (
             "Every good drama needs a stage. This one's a booking system: pick a seat, get a "
             "ticket, and hope nobody else clicked the same row at the same second."
@@ -739,8 +739,8 @@ PROJECTS = [
         "tags": ["travel", "fullstack", "coursework"],
         "domains": ["backend"],
         "storyStatus": "completed",
-        "coverType": "illustration",
-        "coverPattern": "voyagera",
+        "coverType": "photo",
+        "coverImage": "/covers/voyagera.jpg",
         "blurb": (
             "Plan a trip without twenty browser tabs: one platform for packages, hotels, "
             "transport, and a chatbot that actually answers the question you asked it."
@@ -788,8 +788,8 @@ EXPERIENCE = [
         "tags": ["computervision", "testautomation", "ongoing"],
         "domains": ["cv", "backend", "ai"],
         "storyStatus": "ongoing",
-        "coverType": "illustration",
-        "coverPattern": "wg-tech",
+        "coverType": "photo",
+        "coverImage": "/covers/wg-tech.jpg",
         "blurb": (
             "The current chapter. Real-time people detection, a CI pipeline that refuses to lie "
             "about test coverage, and a test-orchestration framework that heals itself when a "
@@ -838,8 +838,8 @@ EXPERIENCE = [
         "tags": ["frauddetection", "aws", "forensics"],
         "domains": ["ai", "backend"],
         "storyStatus": "completed",
-        "coverType": "illustration",
-        "coverPattern": "kazunov",
+        "coverType": "photo",
+        "coverImage": "/covers/kazunov1ai.jpg",
         "blurb": (
             "Every document might be lying. A forensics case built on font-switch rates and "
             "compression artifacts -- one pipeline learned to tell real from forged with real "
@@ -880,12 +880,12 @@ EXPERIENCE = [
         "id": "ssra",
         "title": "SSRA",
         "subtitle": "Web Development Intern",
-        "genre": "Non-Fiction",
+        "genre": "Teen Fiction",
         "tags": ["webdev", "firstinternship", "deployment"],
         "domains": ["backend"],
         "storyStatus": "completed",
-        "coverType": "illustration",
-        "coverPattern": "ssra",
+        "coverType": "photo",
+        "coverImage": "/covers/ssra.jpg",
         "blurb": (
             "Based on a true story: the first internship. Five people, one website, and a crash "
             "course in DNS propagation that nobody teaches you in a classroom."
