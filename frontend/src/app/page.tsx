@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { getProfile, getProjects, getExperience } from '@/lib/api';
 import HomeExplorer from '@/components/HomeExplorer';
 import ProjectCard from '@/components/ProjectCard';
@@ -49,13 +50,27 @@ export default async function Home() {
             </div>
           </div>
 
-          <div className={styles.statStrip}>
-            {profile.stats.map((s) => (
-              <div key={s.label} className={styles.statBlock}>
-                <b>{s.value}</b>
-                <span>{s.label.toUpperCase()}</span>
-              </div>
-            ))}
+          <div>
+            <div className={styles.photoFrame}>
+              <Image
+                src="/profile.jpg"
+                alt={profile.name}
+                fill
+                sizes="(max-width: 900px) 200px, 260px"
+                style={{ objectFit: 'cover' }}
+                priority
+              />
+            </div>
+            <p className={styles.photoCaption}>{profile.name} — {profile.location}</p>
+
+            <div className={styles.statStrip}>
+              {profile.stats.map((s) => (
+                <div key={s.label} className={styles.statBlock}>
+                  <b>{s.value}</b>
+                  <span>{s.label.toUpperCase()}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>

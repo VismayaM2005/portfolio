@@ -86,6 +86,27 @@
   color: var(--ink-dim);
 }
 
+.photoFrame {
+  position: relative;
+  width: 100%;
+  max-width: 260px;
+  aspect-ratio: 3 / 4;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: var(--bg-card);
+  margin: 0 auto;
+}
+
+.photoCaption {
+  text-align: center;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-faint);
+  letter-spacing: 0.4px;
+  margin: 10px 0 24px;
+}
+
 .statStrip {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
