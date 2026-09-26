@@ -1,52 +1,80 @@
-# Vismaya M — Operator Console
+# Vismaya M — Portfolio
 
-A personal portfolio site, styled as a systems/telemetry console rather than a
-generic template — because the underlying work (sensor fusion, real-time
-pipelines, dashboards) actually looks like this.
-
-No framework, no build step: hand-written HTML, CSS and vanilla JS.
-
-## Structure
+An "engineering case-file" portfolio: a Next.js frontend backed by a real FastAPI service,
+not a static page. Each project is presented like a technical case file — role, what
+worked, honest limitations, verified metrics, and an expandable "ask about this project"
+Q&A pulled from real interview prep — and the homepage's node-graph lets you explore
+projects by domain (AI/ML, Computer Vision, IoT & Embedded, Backend & Systems).
 
 ```
-index.html                 → all page content/sections
-assets/css/style.css        → design system (colors, layout, components)
-assets/js/main.js           → clock, nav scrollspy, radar chart, reveal-on-scroll, clipboard copy
-assets/files/Vismaya_M_Resume.pdf → downloadable resume (update this file to refresh the download)
-assets/img/profile.jpg      → headshot used in the ID card (add this file; falls back to "NO SIGNAL" if missing)
-```
-
-## Editing content
-
-Everything is plain HTML in `index.html` — search for the section by its
-`id` (`profile`, `modules`, `ops-log`, `subsystems`, `credentials`, `uplink`)
-and edit the markup directly. Project "modules" are self-contained
-`<article class="module-card">` blocks including their own inline SVG
-architecture diagram — copy a whole block to add a new project.
-
-To add a project's live repo link, replace the placeholder tag inside its
-`.module-links` div, e.g.:
-
-```html
-<div class="module-links" data-repo-slot="flashrescue">
-  <a class="tag tag-cyan" href="https://github.com/you/flashrescue" target="_blank" rel="noopener">VIEW REPO ↗</a>
-</div>
+backend/    FastAPI service — all content lives in backend/app/data.py
+frontend/   Next.js (App Router, TypeScript) — fetches from the backend API
 ```
 
 ## Running locally
 
-Just open `index.html` in a browser — no server required. If you want live
-reload while editing, any static file server works, e.g.:
+You need both processes running at once (two terminals).
 
+**1. Backend**
+
+```bash
+cd backend
+python -m venv .venv
+./.venv/Scripts/activate        # Windows: .venv\Scripts\activate
+pip install -r requirements.txt
+uvicorn app.main:app --reload   # http://localhost:8000
 ```
-npx serve .
+
+**2. Frontend**
+
+```bash
+cd frontend
+npm install
+npm run dev                     # http://localhost:3000
 ```
+
+The frontend reads the backend URL from `frontend/.env.local` (`NEXT_PUBLIC_API_URL`,
+defaults to `http://localhost:8000`).
+
+## Editing content
+
+**Everything you'd want to change — project descriptions, metrics, experience, education,
+achievements — lives in one file: `backend/app/data.py`.** It's plain Python data
+(lists of dicts), validated against the Pydantic schemas in `backend/app/models.py` on
+every request. There's no database and no CMS to wire up; edit the file, save, and the
+running `uvicorn --reload` process picks it up immediately.
+
+To add a project's live repo link once it's public, set its `"repoUrl"` field in
+`data.py` (currently `None` for all projects, which renders as "Private / not published").
+
+## Contact form
+
+`POST /api/contact` currently appends submissions to `backend/contact_messages.jsonl`
+(gitignored) — it does **not** send an email yet, since that needs a real provider and
+credentials only you can supply. To wire up actual email delivery, the cleanest options
+are:
+
+- **Resend** (resend.com) — a few lines in `backend/app/routers/contact.py`, needs an API key.
+- **AWS SES** — already have AWS familiarity from the Kazunov1AI internship, so this fits your stack.
+
+Either way: get an API key, add it as an environment variable (`RESEND_API_KEY` or AWS
+credentials), and send the email inside `submit_contact()` alongside (or instead of) the
+JSONL write.
 
 ## Deploying
 
-This is a static site, so any of these work with zero config:
+This is a two-service app, so it needs two deployments:
 
-- **GitHub Pages** — push this folder to a repo, enable Pages on the `main`
-  branch.
-- **Vercel / Netlify** — drag-and-drop the folder or connect the repo; no
-  build command needed (root = output directory).
+- **Frontend → Vercel.** Import the repo, set the root directory to `frontend`, and add
+  an environment variable `NEXT_PUBLIC_API_URL` pointing at your deployed backend URL.
+- **Backend → Render or Fly.io.** Point it at the `backend` directory, build command
+  `pip install -r requirements.txt`, start command `uvicorn app.main:app --host 0.0.0.0 --port $PORT`.
+  Set an `ALLOWED_ORIGINS` environment variable to your Vercel URL(s) (comma-separated)
+  so CORS allows the deployed frontend to call it.
+
+## Where the content came from
+
+Sourced from the FlowCV resume (2026-09-22), LinkedIn project exports, and two
+interview-prep documents. Where those documents corrected a resume claim against the
+actual code (e.g. AURA's routing is a greedy algorithm, not A*), the corrected version
+is what's published here.

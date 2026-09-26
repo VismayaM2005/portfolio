@@ -1,0 +1,10 @@
+# Python (backend)
+backend/.venv/
+backend/__pycache__/
+backend/**/__pycache__/
+backend/*.pyc
+backend/contact_messages.jsonl
+
+# Node (frontend) has its own .gitignore, but ignore it here too just in case
+frontend/node_modules/
+frontend/.next/

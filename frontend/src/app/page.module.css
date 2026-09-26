@@ -1,0 +1,200 @@
+.hero {
+  padding: 76px 0 60px;
+}
+
+.heroGrid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 56px;
+  align-items: center;
+}
+
+.eyebrow {
+  display: inline-block;
+  margin-bottom: 22px;
+  padding: 8px 16px;
+  border: 1px solid var(--line-strong);
+  border-radius: 20px;
+}
+
+.name {
+  font-size: clamp(42px, 6vw, 68px);
+  letter-spacing: -0.5px;
+  margin-bottom: 6px;
+}
+
+.tagline {
+  font-family: var(--mono);
+  font-size: clamp(14px, 1.8vw, 17px);
+  color: var(--accent-ink);
+  font-weight: 600;
+  margin-bottom: 22px;
+}
+
+.abstract {
+  font-size: 16.5px;
+  color: var(--ink-dim);
+  line-height: 1.8;
+  max-width: 600px;
+  margin-bottom: 32px;
+}
+
+.ctaRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.btn {
+  font-family: var(--mono);
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  padding: 13px 22px;
+  border-radius: 3px;
+  border: 1px solid transparent;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: transform 0.15s, background 0.15s, border-color 0.15s;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btnPrimary {
+  background: var(--ink);
+  color: var(--bg);
+}
+
+.btnPrimary:hover {
+  background: var(--accent-ink);
+}
+
+.btnGhost {
+  border-color: var(--line-strong);
+  color: var(--accent-ink);
+}
+
+.btnGhost:hover {
+  background: var(--accent-soft);
+}
+
+.btnIcon {
+  border-color: var(--line);
+  color: var(--ink-dim);
+}
+
+.statStrip {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.statBlock {
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 18px;
+  text-align: center;
+}
+
+.statBlock b {
+  display: block;
+  font-family: var(--mono);
+  font-size: 24px;
+  color: var(--accent-ink);
+}
+
+.statBlock span {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--ink-faint);
+  letter-spacing: 1px;
+}
+
+.section {
+  padding: 90px 0;
+  border-top: 1px solid var(--line);
+}
+
+.sectionHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 36px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.sectionHead h2 {
+  font-size: clamp(24px, 3vw, 32px);
+  margin-top: 8px;
+}
+
+.sectionLink {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--accent-ink);
+  letter-spacing: 0.4px;
+  white-space: nowrap;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 18px;
+}
+
+.opsTeaser {
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 28px 32px;
+}
+
+.opsTeaser h3 {
+  font-size: 19px;
+  margin-bottom: 4px;
+}
+
+.opsOrg {
+  color: var(--ink-dim);
+  font-size: 14px;
+  margin-bottom: 14px;
+}
+
+.opsPoint {
+  color: var(--ink-dim);
+  font-size: 14px;
+  line-height: 1.7;
+  margin-bottom: 6px;
+  padding-left: 16px;
+  position: relative;
+}
+
+.opsPoint::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+}
+
+@media (max-width: 900px) {
+  .heroGrid {
+    grid-template-columns: 1fr;
+  }
+  .statStrip {
+    max-width: 380px;
+  }
+}
+
+@media (max-width: 560px) {
+  .hero {
+    padding: 52px 0 40px;
+  }
+  .btnIcon {
+    display: none;
+  }
+}
