@@ -13,6 +13,43 @@
   object-fit: cover;
 }
 
+.scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 45%, rgba(10, 8, 6, 0.55) 78%, rgba(10, 8, 6, 0.86) 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 12px 12px 10px;
+}
+
+.coverTitle {
+  font-family: var(--display);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.15;
+  font-size: 14px;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+  margin-bottom: 4px;
+}
+
+.cover[data-size='hero'] .coverTitle {
+  font-size: 22px;
+  margin-bottom: 6px;
+}
+
+.cover[data-size='hero'] .coverByline {
+  font-size: 12px;
+}
+
+.coverByline {
+  font-family: var(--sans);
+  font-size: 10px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.85);
+  letter-spacing: 0.3px;
+}
+
 .statusRibbon {
   position: absolute;
   top: 10px;
@@ -26,4 +63,5 @@
   letter-spacing: 0.6px;
   padding: 3px 40px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+  z-index: 2;
 }

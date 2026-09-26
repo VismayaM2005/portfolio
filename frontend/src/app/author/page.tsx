@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import type { Metadata } from 'next';
 import { getProfile, getCredentials, getBooks } from '@/lib/api';
+import BookCard from '@/components/BookCard';
 import styles from './page.module.css';
 
 export const metadata: Metadata = { title: 'About the Author — Vismaya M' };
@@ -47,6 +48,18 @@ export default async function AuthorPage() {
       <section className={styles.body}>
         <div className="wrap">
           <p className={styles.bio}>{profile.bio}</p>
+
+          <div className={styles.panel} style={{ marginBottom: 20 }}>
+            <h2>📚 Works ({books.length})</h2>
+            <div className={styles.worksGrid}>
+              {books.slice(0, 6).map((b) => (
+                <BookCard key={b.slug} book={b} />
+              ))}
+            </div>
+            <Link href="/" className={styles.worksLink}>
+              View full library →
+            </Link>
+          </div>
 
           <div className={styles.grid}>
             <div className={styles.panel}>

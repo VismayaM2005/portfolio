@@ -45,10 +45,19 @@ export default async function BookPage({ params }: { params: Promise<{ slug: str
           </Link>
           <div className={styles.headerGrid}>
             <div>
-              <BookCover book={book} priority />
+              <BookCover book={book} priority size="hero" />
             </div>
             <div>
               <span className={styles.genre}>{book.genre}</span>
+              {book.tags.length > 0 && (
+                <div className={styles.tagRow}>
+                  {book.tags.map((t) => (
+                    <span key={t} className={styles.tagChip}>
+                      #{t}
+                    </span>
+                  ))}
+                </div>
+              )}
               <h1 className={styles.title}>{book.title}</h1>
               <p className={styles.subtitle}>{book.subtitle}</p>
               <p className={styles.byline}>
@@ -78,9 +87,11 @@ export default async function BookPage({ params }: { params: Promise<{ slug: str
               )}
 
               <div className={styles.metaRow}>
-                <span>📖 {book.chapterCount} chapters</span>
-                <span>⏱ {book.readMinutes} min read</span>
-                <span>{book.storyStatus === 'ongoing' ? '🟢 Ongoing' : '✅ Completed'}</span>
+                <span className={`${styles.badge} ${styles.badgeReads}`}>📖 {book.chapterCount} chapters</span>
+                <span className={`${styles.badge} ${styles.badgeTime}`}>⏱ {book.readMinutes} min read</span>
+                <span className={`${styles.badge} ${styles.badgeStatus}`}>
+                  {book.storyStatus === 'ongoing' ? '🟢 Ongoing' : '✅ Completed'}
+                </span>
               </div>
 
               <div className={styles.ctaRow}>

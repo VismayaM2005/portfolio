@@ -54,6 +54,7 @@ export interface BookSummary {
   title: string;
   subtitle: string;
   genre: string;
+  tags: string[];
   domains: string[];
   storyStatus: StoryStatus;
   coverType: CoverType;

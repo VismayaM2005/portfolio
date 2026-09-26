@@ -54,6 +54,7 @@ class BookSummary(BaseModel):
     title: str
     subtitle: str
     genre: str
+    tags: List[str] = []
     domains: List[str]
     storyStatus: Literal["ongoing", "completed"]
     coverType: Literal["photo", "illustration"]

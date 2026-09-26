@@ -10,11 +10,18 @@ export default function BookCard({ book, priority = false }: { book: BookSummary
         <BookCover book={book} priority={priority} />
       </div>
       <span className={styles.genre}>{book.genre}</span>
-      <h3 className={styles.title}>{book.title}</h3>
-      <p className={styles.byline}>by Vismaya M</p>
+      {book.tags.length > 0 && (
+        <div className={styles.tagRow}>
+          {book.tags.slice(0, 3).map((t) => (
+            <span key={t} className={styles.tag}>
+              #{t}
+            </span>
+          ))}
+        </div>
+      )}
       <div className={styles.statRow}>
-        <span>📖 {book.chapterCount} ch</span>
-        <span>⏱ {book.readMinutes}m</span>
+        <span className={`${styles.badge} ${styles.badgeReads}`}>📖 {book.chapterCount}</span>
+        <span className={`${styles.badge} ${styles.badgeTime}`}>⏱ {book.readMinutes}m</span>
       </div>
     </Link>
   );
