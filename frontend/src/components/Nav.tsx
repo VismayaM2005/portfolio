@@ -6,11 +6,9 @@ import { useState } from 'react';
 import styles from './Nav.module.css';
 
 const LINKS = [
-  { href: '/', label: 'Home' },
-  { href: '/projects', label: 'Case Files' },
-  { href: '/experience', label: 'Ops Log' },
-  { href: '/credentials', label: 'Credentials' },
-  { href: '/contact', label: 'Contact' },
+  { href: '/', label: 'Library' },
+  { href: '/author', label: 'About the Author' },
+  { href: '/contact', label: 'Message Me' },
 ];
 
 export default function Nav() {
@@ -21,8 +19,8 @@ export default function Nav() {
     <header className={styles.bar}>
       <div className={styles.inner}>
         <Link href="/" className={styles.brand} onClick={() => setOpen(false)}>
-          <span className={styles.brandMark}>V</span>
-          <span>Vismaya M</span>
+          <span className={styles.mark}>V</span>
+          <span className={styles.brandText}>vismaya.writes</span>
         </Link>
 
         <nav className={styles.links} data-open={open}>

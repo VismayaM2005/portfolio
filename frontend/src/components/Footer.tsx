@@ -5,7 +5,7 @@ export default function Footer() {
   return (
     <footer className={styles.foot}>
       <div className={`wrap ${styles.inner}`}>
-        <span>© {year} Vismaya M — content sourced from verified project records</span>
+        <span>© {year} Vismaya M — every word above is about something that actually got built</span>
         <span>
           <a href="https://github.com/vismayaM-2005" target="_blank" rel="noopener noreferrer">
             GitHub

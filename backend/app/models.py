@@ -1,4 +1,4 @@
-from typing import List, Optional
+from typing import List, Optional, Literal
 from pydantic import BaseModel, EmailStr, Field
 
 
@@ -7,7 +7,6 @@ class Domain(BaseModel):
     label: str
     short: str
     color: str
-    description: str
 
 
 class Stat(BaseModel):
@@ -15,23 +14,20 @@ class Stat(BaseModel):
     value: str
 
 
-class Capability(BaseModel):
-    domain: str
-    level: int
-
-
 class Profile(BaseModel):
     name: str
+    penName: str
     location: str
     tagline: str
     abstract: str
+    bio: str
     email: str
     phone: str
     linkedin: str
     github: str
     resumeUrl: str
+    photoUrl: str
     stats: List[Stat]
-    capabilities: List[Capability]
 
 
 class Metric(BaseModel):
@@ -44,44 +40,43 @@ class QAItem(BaseModel):
     a: str
 
 
-class Project(BaseModel):
+class Chapter(BaseModel):
+    title: str
+    hook: str
+    body: List[str] = []
+    bullets: List[str] = []
+    metrics: List[Metric] = []
+
+
+class BookSummary(BaseModel):
     slug: str
+    kind: Literal["project", "internship"]
     title: str
     subtitle: str
+    genre: str
     domains: List[str]
+    storyStatus: Literal["ongoing", "completed"]
+    coverType: Literal["photo", "illustration"]
+    coverImage: Optional[str] = None
+    coverPattern: Optional[str] = None
+    blurb: str
+    featured: bool
+    chapterCount: int
+    readMinutes: int
+
+
+class Book(BookSummary):
     status: List[str]
     team: str
-    featured: bool
-    summary: str
-    role: str
-    teammates: Optional[str] = None
-    whatWorked: List[str] = []
-    limitations: List[str] = []
-    metrics: List[Metric] = []
     techStack: List[str] = []
     qa: List[QAItem] = []
-    note: Optional[str] = None
     repoUrl: Optional[str] = None
+    chapters: List[Chapter]
 
 
-class ProjectSummary(BaseModel):
-    slug: str
-    title: str
-    subtitle: str
-    domains: List[str]
-    status: List[str]
-    summary: str
-    featured: bool
-
-
-class ExperienceEntry(BaseModel):
-    id: str
-    role: str
-    org: str
-    start: str
-    end: Optional[str] = None
-    status: str
-    points: List[str]
+class Genre(BaseModel):
+    name: str
+    count: int
 
 
 class Achievement(BaseModel):

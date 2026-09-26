@@ -2,6 +2,7 @@
   border-top: 1px solid var(--line);
   padding: 28px 0;
   margin-top: 80px;
+  background: var(--bg-alt);
 }
 
 .inner {
@@ -9,16 +10,15 @@
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 10px;
-  font-family: var(--mono);
-  font-size: 11px;
-  letter-spacing: 0.4px;
+  font-size: 13px;
   color: var(--ink-faint);
 }
 
 .inner a {
   color: var(--ink-dim);
+  font-weight: 600;
 }
 
 .inner a:hover {
-  color: var(--accent-ink);
+  color: var(--orange);
 }

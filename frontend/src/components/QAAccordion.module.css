@@ -25,7 +25,7 @@
 
 .icon {
   font-family: var(--mono);
-  color: var(--accent-ink);
+  color: var(--orange);
   flex-shrink: 0;
   transition: transform 0.2s;
 }

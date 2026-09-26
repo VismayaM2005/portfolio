@@ -3,7 +3,7 @@ import os
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from .routers import projects, profile, contact
+from .routers import books, profile, contact
 
 app = FastAPI(
     title="Vismaya M — Portfolio API",
@@ -24,7 +24,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.include_router(projects.router)
+app.include_router(books.router)
 app.include_router(profile.router)
 app.include_router(contact.router)
 

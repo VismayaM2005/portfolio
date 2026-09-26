@@ -1,8 +1,7 @@
-from typing import List
 from fastapi import APIRouter
 
 from .. import data
-from ..models import Profile, ExperienceEntry, Credentials
+from ..models import Profile, Credentials
 
 router = APIRouter(prefix="/api", tags=["profile"])
 
@@ -10,11 +9,6 @@ router = APIRouter(prefix="/api", tags=["profile"])
 @router.get("/profile", response_model=Profile)
 def get_profile():
     return data.PROFILE
-
-
-@router.get("/experience", response_model=List[ExperienceEntry])
-def get_experience():
-    return data.EXPERIENCE
 
 
 @router.get("/credentials", response_model=Credentials)

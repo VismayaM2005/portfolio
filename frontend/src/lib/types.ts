@@ -3,7 +3,6 @@ export interface Domain {
   label: string;
   short: string;
   color: string;
-  description: string;
 }
 
 export interface Stat {
@@ -11,23 +10,20 @@ export interface Stat {
   value: string;
 }
 
-export interface Capability {
-  domain: string;
-  level: number;
-}
-
 export interface Profile {
   name: string;
+  penName: string;
   location: string;
   tagline: string;
   abstract: string;
+  bio: string;
   email: string;
   phone: string;
   linkedin: string;
   github: string;
   resumeUrl: string;
+  photoUrl: string;
   stats: Stat[];
-  capabilities: Capability[];
 }
 
 export interface Metric {
@@ -40,37 +36,47 @@ export interface QAItem {
   a: string;
 }
 
-export interface ProjectSummary {
+export interface Chapter {
+  title: string;
+  hook: string;
+  body: string[];
+  bullets: string[];
+  metrics: Metric[];
+}
+
+export type BookKind = 'project' | 'internship';
+export type StoryStatus = 'ongoing' | 'completed';
+export type CoverType = 'photo' | 'illustration';
+
+export interface BookSummary {
   slug: string;
+  kind: BookKind;
   title: string;
   subtitle: string;
+  genre: string;
   domains: string[];
-  status: string[];
-  summary: string;
+  storyStatus: StoryStatus;
+  coverType: CoverType;
+  coverImage?: string | null;
+  coverPattern?: string | null;
+  blurb: string;
   featured: boolean;
+  chapterCount: number;
+  readMinutes: number;
 }
 
-export interface Project extends ProjectSummary {
+export interface Book extends BookSummary {
+  status: string[];
   team: string;
-  role: string;
-  teammates?: string | null;
-  whatWorked: string[];
-  limitations: string[];
-  metrics: Metric[];
   techStack: string[];
   qa: QAItem[];
-  note?: string | null;
   repoUrl?: string | null;
+  chapters: Chapter[];
 }
 
-export interface ExperienceEntry {
-  id: string;
-  role: string;
-  org: string;
-  start: string;
-  end?: string | null;
-  status: string;
-  points: string[];
+export interface Genre {
+  name: string;
+  count: number;
 }
 
 export interface Achievement {

@@ -1,19 +1,18 @@
 import type { Metadata } from 'next';
-import { Fraunces, Public_Sans, JetBrains_Mono } from 'next/font/google';
+import { Baloo_2, Manrope, JetBrains_Mono } from 'next/font/google';
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
 import './globals.css';
 
-const fraunces = Fraunces({
+const baloo = Baloo_2({
   subsets: ['latin'],
-  variable: '--font-fraunces',
-  axes: ['opsz', 'SOFT', 'WONK'],
+  variable: '--font-baloo',
   display: 'swap',
 });
 
-const publicSans = Public_Sans({
+const manrope = Manrope({
   subsets: ['latin'],
-  variable: '--font-public-sans',
+  variable: '--font-manrope',
   display: 'swap',
 });
 
@@ -24,14 +23,14 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Vismaya M — Engineering Case Files',
+  title: 'Vismaya M — a library of real projects',
   description:
-    'Vismaya M — AI, IoT, and backend systems engineer. Patent-holder, published researcher, builder of real sensor-fusion, ML, and full-stack systems.',
+    'Vismaya M — AI, IoT, and backend systems engineer. Every project and internship, told as a book: the problem, the build, the plot twist, and the result.',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${fraunces.variable} ${publicSans.variable} ${jetbrainsMono.variable}`}>
+    <html lang="en" className={`${baloo.variable} ${manrope.variable} ${jetbrainsMono.variable}`}>
       <body>
         <Nav />
         {children}

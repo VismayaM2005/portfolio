@@ -1,90 +1,82 @@
 """
 Canonical content for the portfolio API.
 
-Everything here is sourced from Vismaya's resume (FlowCV, 2026-09-22),
-LinkedIn project exports, and two interview-prep documents (PROJECTS.docx,
-REVISION.docx) that corrected a couple of resume claims against the real
-code. Where the docs disagreed with the resume, the more accurate,
-verified description was used:
+Presented as a Wattpad-style library: every project and internship is a
+"book" with a genre, a blurb, and five chapters (Premise / Build / Plot
+Twist / Resolution / Author's Notes). The technical substance is real and
+front-loaded in each chapter -- the narrative framing is a layer on top,
+not a replacement for it.
 
-- AURA's routing is a greedy nearest-safe-neighbor algorithm, not A*.
-- FlashRescue's routing is OSRM + post-hoc hazard filtering, not A*.
-- IntelliCheck AI is a local-first Streamlit app (TF-IDF + RAG/FAISS +
-  FLAN-T5), not a FastAPI service; its GitHub Actions CI was planned,
-  not shipped.
-- Kazunov1AI's image-fraud-detection pipeline is explicitly described as
-  an experimental, still-inconsistent model in her own notes -- so it is
-  described qualitatively here rather than with a specific accuracy
-  figure that she flagged as unreliable.
+Content is sourced from Vismaya's resume (FlowCV, 2026-09-22), LinkedIn
+project exports, and two interview-prep documents (PROJECTS.docx,
+REVISION.docx) that corrected a couple of resume claims against the real
+code -- see the corrections noted inline below.
+
+No invented stats. The per-book counters shown on covers (chapters, read
+time, status) are all real and derived from this file, not decorative.
 """
 
 DOMAINS = [
-    {
-        "id": "ai",
-        "label": "AI / ML",
-        "short": "AI/ML",
-        "color": "#b3541e",
-        "description": "Applied machine learning, generative AI, and evaluation/explainability.",
-    },
-    {
-        "id": "cv",
-        "label": "Computer Vision",
-        "short": "CV",
-        "color": "#2f6f6a",
-        "description": "Real-time detection, tracking, and video analytics.",
-    },
-    {
-        "id": "iot",
-        "label": "IoT & Embedded",
-        "short": "IoT",
-        "color": "#5c6b2e",
-        "description": "Sensors, microcontrollers, and on-device inference.",
-    },
-    {
-        "id": "backend",
-        "label": "Backend & Systems",
-        "short": "Backend",
-        "color": "#3c4a6b",
-        "description": "APIs, test infrastructure, async pipelines, and deployed full-stack apps.",
-    },
+    {"id": "ai", "label": "AI / ML", "short": "AI/ML", "color": "#c65a1e"},
+    {"id": "cv", "label": "Computer Vision", "short": "CV", "color": "#2f6f6a"},
+    {"id": "iot", "label": "IoT & Embedded", "short": "IoT", "color": "#5c6b2e"},
+    {"id": "backend", "label": "Backend & Systems", "short": "Backend", "color": "#3c4a6b"},
 ]
 
 PROFILE = {
     "name": "Vismaya M",
+    "penName": "vismaya.writes",
     "location": "Bengaluru, Karnataka, India",
-    "tagline": "Final-year CSE engineer working across AI, IoT, and backend systems engineering.",
+    "tagline": "final-year CSE engineer · writes in AI, IoT, and backend systems",
     "abstract": (
-        "I build the parts most portfolios keep separate: the sensors that "
-        "gather signal, the models that interpret it, and the backend and "
-        "test infrastructure that keep the whole thing honest in production. "
-        "One filed patent, one SCOPUS-indexed publication, three internships, "
-        "eleven shipped projects -- all built, none simulated for a demo."
+        "I build the parts most portfolios keep separate: the sensors that gather signal, "
+        "the models that interpret it, and the backend and test infrastructure that keep the "
+        "whole thing honest in production. One filed patent, one SCOPUS-indexed publication, "
+        "three internships, eleven shipped projects -- all built, none simulated for a demo."
+    ),
+    "bio": (
+        "Final-year Computer Science engineer at BNM Institute of Technology (CGPA 9.73). "
+        "I write real, working systems across AI/ML, computer vision, IoT, and backend "
+        "engineering -- then write up what actually happened when I built them, including the "
+        "parts that didn't work the first time. Currently an Edge AI Intern at WG Tech Solutions."
     ),
     "email": "vismayamsagar@gmail.com",
     "phone": "+91 93802 12798",
     "linkedin": "https://linkedin.com/in/vismaya-m-b381a8243",
     "github": "https://github.com/vismayaM-2005",
     "resumeUrl": "/resume.pdf",
+    "photoUrl": "/profile.jpg",
     "stats": [
         {"label": "CGPA", "value": "9.73/10"},
         {"label": "Patents filed", "value": "1"},
         {"label": "Published papers", "value": "1"},
         {"label": "Internships", "value": "3"},
     ],
-    "capabilities": [
-        {"domain": "ai", "level": 9},
-        {"domain": "cv", "level": 8},
-        {"domain": "iot", "level": 8},
-        {"domain": "backend", "level": 8},
-    ],
 }
+
+# ---------------------------------------------------------------------------
+# Each project/internship "book". Chapter hooks are short, playful lead-ins;
+# the substantial technical content that follows (role, whatWorked,
+# limitations, metrics, techStack, qa) is reused as the body of each chapter
+# on the frontend -- see frontend/src/app/book/[slug]/page.tsx.
+# ---------------------------------------------------------------------------
 
 PROJECTS = [
     {
         "slug": "flashrescue",
         "title": "FlashRescue",
         "subtitle": "Smart-City Disaster Response Platform",
+        "genre": "Mystery/Thriller",
         "domains": ["ai", "backend", "iot"],
+        "storyStatus": "completed",
+        "coverType": "illustration",
+        "coverPattern": "flashrescue",
+        "blurb": (
+            "A city is flooding, and everyone's phone is lying to everyone else. Some reports "
+            "are real, some are panic, one might be a prank. This is the story of the fusion "
+            "layer that had to tell the difference in under 500 milliseconds -- and the patent, "
+            "paper, and prize it eventually won after losing three times first."
+        ),
         "status": ["Patent filed", "Published — ICSDSA 2026 (Springer, SCOPUS)", "2nd Prize — K-GIS 2.0"],
         "team": "3-person hackathon team, developed over ~7 months across several competitions",
         "featured": True,
@@ -154,12 +146,29 @@ PROJECTS = [
         ],
         "note": "This version won 2nd prize at K-GIS -- it lost at 3-4 earlier competitions first.",
         "repoUrl": None,
+        "chapterHooks": {
+            "premise": "Every disaster app has the same dirty secret: it trusts its inputs. This one doesn't.",
+            "build": "Three vision models, a speech model, and a scoring rule that refuses to agree with itself too easily.",
+            "twist": "The hard part was never the AI. It was two numbers that don't mean the same thing arguing over who's right.",
+            "resolution": "Half a second to raise an alarm. Less than that to plot a way around the danger.",
+            "notes": "It lost. Three times. Then it won, and got patented, and got published.",
+        },
     },
     {
         "slug": "aura",
         "title": "AURA",
         "subtitle": "Adaptive Urban Risk Analyzer for Crowd Management",
+        "genre": "Action",
         "domains": ["cv", "ai", "backend"],
+        "storyStatus": "completed",
+        "coverType": "illustration",
+        "coverPattern": "aura",
+        "blurb": (
+            "A crowd is a slow-motion emergency until it isn't. This is the story of the number "
+            "that had to turn video noise into a red/yellow/green verdict fast enough to matter, "
+            "and the routing algorithm that had to pick a safe way out before the situation did "
+            "the choosing instead."
+        ),
         "status": ["Real-time CV pipeline", "4-person team"],
         "team": "4-person team -- teammates built the video-analytics pipeline, admin dashboard, and mobile app",
         "featured": True,
@@ -214,12 +223,28 @@ PROJECTS = [
         ],
         "note": None,
         "repoUrl": None,
+        "chapterHooks": {
+            "premise": "Nobody screams before a stampede. The video feed has to notice before the crowd does.",
+            "build": "Three numbers a frame, smoothed enough to trust, sharp enough to matter.",
+            "twist": "The 'optimal' pathfinding algorithm lost to a greedy one that just runs fast enough to still be right.",
+            "resolution": "Green, yellow, orange, red -- and a route out, recalculated as fast as the danger changes.",
+            "notes": "Correction from the field notes: it's a greedy algorithm, not A*. Fast beats fancy here.",
+        },
     },
     {
         "slug": "intellicheck-ai",
         "title": "IntelliCheck AI",
         "subtitle": "AI Integrity & Plagiarism Detection Platform",
+        "genre": "Science Fiction",
         "domains": ["ai", "backend"],
+        "storyStatus": "completed",
+        "coverType": "photo",
+        "coverImage": "/covers/intellicheck-ai.png",
+        "blurb": (
+            "It doesn't just say \"guilty.\" It shows its work -- the exact passage it matched, "
+            "why, and how to fix it -- all running locally on a laptop with zero paid API calls. "
+            "A quiet, local-first machine that explains itself instead of just accusing."
+        ),
         "status": ["Local-first, zero paid API"],
         "team": "2-person project, built jointly across most modules",
         "featured": True,
@@ -271,12 +296,29 @@ PROJECTS = [
         ],
         "note": None,
         "repoUrl": None,
+        "chapterHooks": {
+            "premise": "A plagiarism checker that just says \"flagged\" is a black box. This one had to show its receipts.",
+            "build": "TF-IDF for speed, FAISS and a local language model for the part where it explains itself.",
+            "twist": "The heatmap looks like transformer attention. It isn't, and the docs say so on purpose.",
+            "resolution": "Every flag comes with the matching passage and a plain-English reason -- and it never leaves the laptop.",
+            "notes": "Known gap, stated plainly: good paraphrasing can still slip past a lexical-similarity first pass.",
+        },
     },
     {
         "slug": "reviewmate",
         "title": "ReviewMate",
         "subtitle": "AI Coding-Interview Evaluator",
+        "genre": "Humor",
         "domains": ["backend", "ai"],
+        "storyStatus": "completed",
+        "coverType": "illustration",
+        "coverPattern": "reviewmate",
+        "blurb": (
+            "What if your code could be judged by an imaginary, slightly intimidating panel of "
+            "Google, Amazon, and Goldman Sachs interviewers -- on demand, for free, without the "
+            "actual anxiety? A solo project built for laughs that turned into a real, deployed app "
+            "with genuinely useful feedback."
+        ),
         "status": ["Solo project", "Deployed — live"],
         "team": "Solo, full-stack",
         "featured": True,
@@ -329,12 +371,29 @@ PROJECTS = [
         ],
         "note": None,
         "repoUrl": None,
+        "chapterHooks": {
+            "premise": "Every coding-interview prep tool tells you if your code works. None of them tell you if Google would hire you for it.",
+            "build": "A persona-conditioned prompt, a parser for the LLM's opinions, and a database that remembers every verdict.",
+            "twist": "Ask the same model the same question twice, get two slightly different answers -- welcome to LLM engineering.",
+            "resolution": "Live, deployed, and free to insult your code as six different tech companies.",
+            "notes": "Built for laughs. Kept because it was actually useful.",
+        },
     },
     {
         "slug": "imdb-sentiment",
         "title": "IMDB Sentiment Analysis",
         "subtitle": "BiLSTM vs. DistilBERT, with a Conflict-Score evaluation framework",
+        "genre": "Science Fiction",
         "domains": ["ai"],
+        "storyStatus": "completed",
+        "coverType": "photo",
+        "coverImage": "/covers/imdb-sentiment.png",
+        "blurb": (
+            "Two models read the same movie reviews. One is a careful old-school recurrent net. "
+            "The other is a pretrained transformer that's seen half the internet. This is the "
+            "story of which one lied to itself more confidently -- and why that matters more than "
+            "who scored higher."
+        ),
         "status": ["3-person project"],
         "team": "3-person project -- teammates trained the BiLSTM and fine-tuned DistilBERT; my scope was evaluation and explainability",
         "featured": True,
@@ -377,12 +436,28 @@ PROJECTS = [
         ],
         "note": None,
         "repoUrl": None,
+        "chapterHooks": {
+            "premise": "Accuracy tells you who's right more often. It doesn't tell you who's dangerous when they're wrong.",
+            "build": "A scorer whose only job is to catch a model being confidently, dangerously mistaken.",
+            "twist": "The bigger, pretrained model won -- not just on accuracy, but on knowing what it didn't know.",
+            "resolution": "Top-10 riskiest misfires per model, explained word-by-word, not just scored.",
+            "notes": "The real finding wasn't which model was better. It was which one you'd trust unsupervised.",
+        },
     },
     {
         "slug": "smart-agriculture",
         "title": "Smart Agriculture Intelligence System",
         "subtitle": "Deep learning for crop health and yield planning",
+        "genre": "Adventure",
         "domains": ["cv", "iot", "ai"],
+        "storyStatus": "completed",
+        "coverType": "photo",
+        "coverImage": "/covers/smart-agriculture.jpg",
+        "blurb": (
+            "A leaf, a phone camera, and a model that has to be right about 98.88% confident and "
+            "honest about the other 1.12%. A hackathon quest to make a CNN useful to someone who's "
+            "never heard the words \"transfer learning\" in their life."
+        ),
         "status": ["Hackathon", "3-person team"],
         "team": "3-person hackathon team -- teammates built webcam disease detection and satellite/weather yield prediction; my scope was image-upload disease classification and explainability",
         "featured": True,
@@ -425,12 +500,28 @@ PROJECTS = [
         ],
         "note": None,
         "repoUrl": None,
+        "chapterHooks": {
+            "premise": "A farmer doesn't want a probability distribution. They want to know if the crop is dying.",
+            "build": "MobileNetV2, fifteen diseases, and a heatmap that points at the actual lesion.",
+            "twist": "Trained on clean lab photos. Real leaves are messier, and the model needed to admit that.",
+            "resolution": "98.88% confident, and a treatment recommendation, not just a label.",
+            "notes": "Next time: field photos, not just PlantVillage's tidy dataset.",
+        },
     },
     {
         "slug": "assistive-navigation-stick",
         "title": "Smart AI-Powered Assistive Navigation Stick",
         "subtitle": "Edge AI mobility aid for visually impaired users",
+        "genre": "Teen Fiction",
         "domains": ["iot", "ai"],
+        "storyStatus": "completed",
+        "coverType": "photo",
+        "coverImage": "/covers/assistive-navigation-stick.jpg",
+        "blurb": (
+            "Five students, eight days, one wooden stick wired up to sensors on a train ride "
+            "to IISc. Every time they compressed the model to fit, it got a little dumber -- so "
+            "they just kept retraining until it didn't."
+        ),
         "status": ["ACM India Winter School on Edge AI — IISc Bengaluru", "5-person team"],
         "team": "Built during an 8-day national Edge AI program at IISc Bengaluru, team of 5",
         "featured": True,
@@ -473,12 +564,28 @@ PROJECTS = [
         ],
         "note": None,
         "repoUrl": None,
+        "chapterHooks": {
+            "premise": "Eight days, five strangers, and a shared goal: a stick that can see so someone else doesn't have to guess.",
+            "build": "A distance sensor, a fall detector, and a buzzer that had to speak in patterns instead of words.",
+            "twist": "Quantize it small enough to fit on the board, and it gets dumber. Every single time.",
+            "resolution": "A working prototype, sensors and all, running entirely on-device.",
+            "notes": "It's a prototype from an 8-day program -- not yet in a real user's hands, and that's said plainly.",
+        },
     },
     {
         "slug": "smart-irrigation",
         "title": "Smart Irrigation & Rain Alert System",
         "subtitle": "Weather-aware automated watering",
+        "genre": "General Fiction",
         "domains": ["iot"],
+        "storyStatus": "completed",
+        "coverType": "photo",
+        "coverImage": "/covers/smart-irrigation.png",
+        "blurb": (
+            "A soil sensor says water me. The weather API says it's about to rain anyway. This is "
+            "the small, unglamorous story of teaching a pump to listen to both before deciding, "
+            "in under five seconds, whether to turn on."
+        ),
         "status": ["2-person project"],
         "team": "2-person project -- teammate handled hardware assembly; I owned the software stack",
         "featured": False,
@@ -514,12 +621,28 @@ PROJECTS = [
         ],
         "note": None,
         "repoUrl": None,
+        "chapterHooks": {
+            "premise": "Two sensors, one pump, and a very simple question: does this plant actually need water right now?",
+            "build": "An ESP32 that checks the soil, then double-checks the sky before it commits.",
+            "twist": "Dry soil isn't the whole story if rain's already on its way.",
+            "resolution": "3-5 seconds from reading to action, tested on an actual potted plant.",
+            "notes": "The thresholds were hand-calibrated, not learned -- an honest, unglamorous first version.",
+        },
     },
     {
         "slug": "morse-code-converter",
         "title": "Morse Code Converter",
         "subtitle": "Real-time text ⇄ Morse tool with audio and an emergency mode",
+        "genre": "Historical Fiction",
         "domains": ["backend"],
+        "storyStatus": "completed",
+        "coverType": "illustration",
+        "coverPattern": "morse",
+        "blurb": (
+            "A 180-year-old signaling code gets a modern rewrite: type a word, hear it tap out in "
+            "dots and dashes, and if that word happens to be \"SOS,\" watch the whole interface "
+            "snap into an emergency mode built for exactly that moment."
+        ),
         "status": ["Personal project"],
         "team": "Solo",
         "featured": False,
@@ -539,18 +662,35 @@ PROJECTS = [
             "Accurate timing-sensitive audio playback for dots, dashes, and pauses.",
             "Robust validation and error handling for unsupported characters and audio/file failures.",
         ],
-        "limitations": [],
+        "limitations": [
+            "Built as a solo learning project with no external test group, so unusual input edge cases haven't been stress-tested by anyone but me.",
+        ],
         "metrics": [],
         "techStack": ["Java", "Java Swing", "Java Sound API"],
         "qa": [],
         "note": None,
         "repoUrl": None,
+        "chapterHooks": {
+            "premise": "Before texting, before the internet, people said things in dots and dashes. This is that, rebuilt.",
+            "build": "Java Sound API timing precise enough that a dash actually sounds three times longer than a dot.",
+            "twist": "Type the word 'SOS' and the whole app changes its mind about what matters right now.",
+            "resolution": "Text to Morse, Morse to audio, audio to a saved file -- the whole loop, working.",
+            "notes": "A solo build, tested by exactly one person: me. Said plainly, not oversold.",
+        },
     },
     {
         "slug": "theatre-info-system",
         "title": "Theatre Info System",
         "subtitle": "Movie/show management and ticket booking",
+        "genre": "Drama",
         "domains": ["backend"],
+        "storyStatus": "completed",
+        "coverType": "illustration",
+        "coverPattern": "theatre",
+        "blurb": (
+            "Every good drama needs a stage. This one's a booking system: pick a seat, get a "
+            "ticket, and hope nobody else clicked the same row at the same second."
+        ),
         "status": ["Coursework"],
         "team": "Solo",
         "featured": False,
@@ -564,19 +704,38 @@ PROJECTS = [
             "availability checks, cancellation, and e-ticket generation, a review/feedback module, "
             "and admin-side management of movies, shows, pricing, and seating."
         ),
-        "whatWorked": [],
-        "limitations": [],
+        "whatWorked": [
+            "The full booking flow works end-to-end: browse, select seats, confirm, and receive an e-ticket.",
+        ],
+        "limitations": [
+            "Built as a coursework project against a fixed dataset -- not load-tested against concurrent booking traffic or a real payment gateway.",
+        ],
         "metrics": [],
         "techStack": ["HTML5", "CSS3", "JavaScript"],
         "qa": [],
         "note": None,
         "repoUrl": None,
+        "chapterHooks": {
+            "premise": "Someone has to manage the box office. Might as well be code.",
+            "build": "Browse, book, pay, admin -- the whole cinema, minus the popcorn.",
+            "twist": "Seat booking sounds simple until two people want the same seat at once.",
+            "resolution": "A complete booking flow, from browsing to e-ticket, working end-to-end.",
+            "notes": "Coursework scope -- never load-tested against real concurrent traffic, and that's fine to say.",
+        },
     },
     {
         "slug": "voyagera",
         "title": "Voyagera",
         "subtitle": "Travel planning & booking platform",
+        "genre": "Adventure",
         "domains": ["backend"],
+        "storyStatus": "completed",
+        "coverType": "illustration",
+        "coverPattern": "voyagera",
+        "blurb": (
+            "Plan a trip without twenty browser tabs: one platform for packages, hotels, "
+            "transport, and a chatbot that actually answers the question you asked it."
+        ),
         "status": ["Coursework"],
         "team": "Team project",
         "featured": False,
@@ -590,19 +749,42 @@ PROJECTS = [
             "customization flow, hotel and transport booking modules with backend storage, and "
             "real-time weather/traffic/local-event data via external APIs."
         ),
-        "whatWorked": [],
-        "limitations": [],
+        "whatWorked": [
+            "Rule-based recommendation and chatbot logic kept the system fully explainable and fast to ship within a coursework timeline.",
+        ],
+        "limitations": [
+            "The chatbot and recommender are rule-based, not ML-driven -- accurate today, but would need a retrieval- or model-based upgrade to scale in sophistication.",
+        ],
         "metrics": [],
         "techStack": ["MongoDB", "Node.js"],
         "qa": [],
         "note": None,
         "repoUrl": None,
+        "chapterHooks": {
+            "premise": "Every trip starts with too many tabs open. This closes most of them.",
+            "build": "A recommender, a chatbot, and two booking modules, all talking to one database.",
+            "twist": "Rule-based logic is honest and fast to ship -- it just doesn't get smarter on its own.",
+            "resolution": "Destinations, packages, and bookings, planned from a single screen.",
+            "notes": "A deliberate trade-off: explainable rules over a black-box model, for a coursework timeline.",
+        },
     },
 ]
 
 EXPERIENCE = [
     {
         "id": "wg-tech",
+        "title": "WG Tech Solutions",
+        "subtitle": "Edge AI Intern",
+        "genre": "Action",
+        "domains": ["cv", "backend", "ai"],
+        "storyStatus": "ongoing",
+        "coverType": "illustration",
+        "coverPattern": "wg-tech",
+        "blurb": (
+            "The current chapter. Real-time people detection, a CI pipeline that refuses to lie "
+            "about test coverage, and a test-orchestration framework that heals itself when a "
+            "file goes missing mid-run. Updated as it happens."
+        ),
         "role": "Edge AI Intern",
         "org": "WG Tech Solutions Pvt. Ltd.",
         "start": "2026-07",
@@ -630,9 +812,28 @@ EXPERIENCE = [
             "~76K-image dataset, fixing a validation blind spot with a capped negative-to-positive ratio and "
             "ByteTrack temporal confirmation.",
         ],
+        "chapterHooks": {
+            "premise": "Real-time video, real defects, and a test suite that had to stop lying about what it covered.",
+            "build": "A polygon you draw on a video feed, and a pair of feet the system watches cross into it.",
+            "twist": "A false alarm turned out to be a data problem, not a model problem -- found the hard way.",
+            "resolution": "3x faster inference at matched accuracy, and a test framework that fixes itself.",
+            "notes": "Ongoing -- this chapter is still being written.",
+        },
     },
     {
         "id": "kazunov1ai",
+        "title": "Kazunov 1AI",
+        "subtitle": "AI Engineer Intern",
+        "genre": "Mystery/Thriller",
+        "domains": ["ai", "backend"],
+        "storyStatus": "completed",
+        "coverType": "illustration",
+        "coverPattern": "kazunov",
+        "blurb": (
+            "Every document might be lying. A forensics case built on font-switch rates and "
+            "compression artifacts -- one pipeline learned to tell real from forged with real "
+            "confidence; the other is still an honest work in progress."
+        ),
         "role": "AI Engineer Intern",
         "org": "Kazunov 1AI Pvt. Ltd.",
         "start": "2026-03",
@@ -656,9 +857,27 @@ EXPERIENCE = [
             "text search instead of hardcoded coordinates, then hashing and cryptographically signing the "
             "document.",
         ],
+        "chapterHooks": {
+            "premise": "A forged document doesn't announce itself. It hides in the font-switching and the metadata.",
+            "build": "A 300-tree forest for PDFs, a CNN-plus-forensics hybrid for images, and a queue that never blocks.",
+            "twist": "The image side is still catching up to the PDF side -- and that's said outright, not hidden.",
+            "resolution": "95.12% on the PDF pipeline. A working, cryptographically real signature POC.",
+            "notes": "Not every pipeline in this internship is finished. The honest one is the useful one.",
+        },
     },
     {
         "id": "ssra",
+        "title": "SSRA",
+        "subtitle": "Web Development Intern",
+        "genre": "Non-Fiction",
+        "domains": ["backend"],
+        "storyStatus": "completed",
+        "coverType": "illustration",
+        "coverPattern": "ssra",
+        "blurb": (
+            "Based on a true story: the first internship. Five people, one website, and a crash "
+            "course in DNS propagation that nobody teaches you in a classroom."
+        ),
         "role": "Web Development Intern",
         "org": "Sankhyatraya Science and Research Association (SSRA)",
         "start": "2025-06",
@@ -669,6 +888,13 @@ EXPERIENCE = [
             "responsive HTML/CSS/JS frontend, Netlify hosting wired to GitHub for auto-deploy on push, and "
             "DNS + SSL (Let's Encrypt via Netlify) configuration to take it live.",
         ],
+        "chapterHooks": {
+            "premise": "The first internship. The one where 'deploy' stopped being a word from a lecture slide.",
+            "build": "Responsive pages, a GitHub-to-Netlify pipeline, and a domain that had to actually resolve.",
+            "twist": "DNS propagation takes anywhere from minutes to two days, and nobody warns you about the waiting.",
+            "resolution": "A live, secure, publicly reachable website -- HTTPS padlock included.",
+            "notes": "First internship, first real deploy. Everything after this got a little less intimidating.",
+        },
     },
 ]
 

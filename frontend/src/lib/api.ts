@@ -1,11 +1,4 @@
-import type {
-  Credentials,
-  Domain,
-  ExperienceEntry,
-  Profile,
-  Project,
-  ProjectSummary,
-} from './types';
+import type { Book, BookSummary, Credentials, Domain, Genre, Profile } from './types';
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:8000';
 
@@ -25,17 +18,21 @@ export function getDomains() {
   return apiGet<Domain[]>('/api/domains');
 }
 
-export function getProjects(domain?: string) {
-  const qs = domain ? `?domain=${encodeURIComponent(domain)}` : '';
-  return apiGet<ProjectSummary[]>(`/api/projects${qs}`);
+export function getGenres() {
+  return apiGet<Genre[]>('/api/genres');
 }
 
-export function getProject(slug: string) {
-  return apiGet<Project>(`/api/projects/${encodeURIComponent(slug)}`);
+export function getBooks(params?: { domain?: string; genre?: string; kind?: string }) {
+  const qs = new URLSearchParams();
+  if (params?.domain) qs.set('domain', params.domain);
+  if (params?.genre) qs.set('genre', params.genre);
+  if (params?.kind) qs.set('kind', params.kind);
+  const suffix = qs.toString() ? `?${qs.toString()}` : '';
+  return apiGet<BookSummary[]>(`/api/books${suffix}`);
 }
 
-export function getExperience() {
-  return apiGet<ExperienceEntry[]>('/api/experience');
+export function getBook(slug: string) {
+  return apiGet<Book>(`/api/books/${encodeURIComponent(slug)}`);
 }
 
 export function getCredentials() {

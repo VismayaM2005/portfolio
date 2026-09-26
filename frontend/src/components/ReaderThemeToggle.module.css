@@ -1,0 +1,19 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--sans);
+  font-weight: 700;
+  font-size: 13px;
+  padding: 9px 16px;
+  border-radius: 20px;
+  border: 1px solid var(--line-strong);
+  background: var(--bg-card);
+  color: var(--ink-dim);
+  cursor: pointer;
+}
+
+.btn:hover {
+  border-color: var(--orange);
+  color: var(--orange);
+}
