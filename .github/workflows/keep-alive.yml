@@ -1,0 +1,20 @@
+name: Keep backend awake
+
+# Render's free tier spins the backend down after 15 minutes of no traffic.
+# This pings it every 10 minutes so it never gets the chance to sleep --
+# visitors always hit an already-warm API, no 30-50s cold-start delay.
+
+on:
+  schedule:
+    - cron: "*/10 * * * *"
+  workflow_dispatch: {}
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping health endpoint
+        run: |
+          curl -sf --max-time 20 https://vismaya-portfolio-api.onrender.com/api/health \
+            && echo "Backend is awake" \
+            || echo "Ping failed (backend may have been cold-starting) -- not fatal"
