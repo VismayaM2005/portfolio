@@ -8,4 +8,4 @@ services:
     startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
     envVars:
       - key: ALLOWED_ORIGINS
-        value: http://localhost:3000
+        value: https://frontend-hazel-eta-15.vercel.app,http://localhost:3000
